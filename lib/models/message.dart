@@ -5,6 +5,7 @@ class Message {
     required this.content,
     required this.createdAt,
     required this.isMine,
+    required this.roomId,
   });
 
   /// ID of the message
@@ -22,6 +23,8 @@ class Message {
   /// Whether the message is sent by the user or not.
   final bool isMine;
 
+  final String roomId;
+
   Message.fromMap({
     required Map<String, dynamic> map,
     required String myUserId,
@@ -29,5 +32,6 @@ class Message {
         profileId = map['profile_id'],
         content = map['content'],
         createdAt = DateTime.parse(map['created_at']),
-        isMine = myUserId == map['profile_id'];
+        isMine = myUserId == map['profile_id'],
+        roomId = map['room_id'];
 }
